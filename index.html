@@ -1,46 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>7 Up or 7 Down</title>
+    <link rel="shortcut icon" href="images/icons/dice-1.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&family=Bowlby+One+SC&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>7 Up or 7 Down?</title>
-  <link rel="stylesheet" href="styles/main.css">
-</head>
+  <body>
+    <div class="container">
+      <main>
+        <h1 class="title"><span class="up">7 Up</span> or <span class="down">7 Down?</span></h1>
+        <section class="betBox">
+          <h2 class="subtitle">Choose your bet</h2>
+          <div class="buttonPanel">
+            <button class="bet-up betBtn btn" id="bet-up">Up</button>
+            <button class="bet-seven betBtn betBtn-pressed btn" id="bet-seven">
+              Seven
+            </button>
+            <button class="bet down betBtn btn" id="bet-down">Down</button>
+          </div>
+        </section>
+        <section class="diceBox">
+          <button class="rollBtn btn" id="roll-btn">Roll dice</button>
+          <div class="roll-imgs">
+            <img
+              src="images/dice4.png"
+              alt="die-image"
+              id="die-1-img"
+              class="dice-roll"
+            />
+            <img
+              src="images/dice3.png"
+              alt="die-image"
+              id="die-2-img"
+              class="dice-roll"
+            />
+          </div>
+        </section>
+        <section class="resultBox">
+          <h2 id="result-txt">Roll the dice to know if you've won!</h2>
+        </section>
+        <section class="history">
+          <h3>History</h3>
+          <div class="game-history">
+            <ul id="history-ul"></ul>
+          </div>
+        </section>
+      </main>
+    </div>
 
-<body>
-
-  <div class="container">
-    <main>
-      <h1 class="title">7 Up or 7 down?</h1>
-      <section class="betBox">
-        <h2>Choose your bet</h2>
-        <button class="bet-up betBtn" id="bet-up">Up</button>
-        <button class="bet-seven betBtn" id="bet-seven">Seven</button>
-        <button class="bet down betBtn" id="bet-down">Down</button>
-      </section>
-      <section class="diceBox">
-        <button class="rollBtn" id="roll-btn">Roll dice</button>
-        <div class="roll-imgs">
-          <img src="images/dice4.png" alt="die-image" id="die-1-img">
-          <img src="images/dice3.png" alt="die-image" id="die-2-img">
-        </div>
-      </section>
-      <section class="resultBox">
-        <h2 id="result-txt">Roll the dice to know if you won!</h2>
-      </section>
-      <section class="game-history">
-        <h3>History</h3>
-        <ul id="history-ul">
-          
-        </ul>
-      </section>
-    </main>
-  </div>
-  <!--TODO: Round history in UL (bet + roll + result)-->
-  <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-  <script src="scripts/app.js"></script>
-</body>
-
+    <div class="attributes">
+      Icons made by
+      <a href="https://www.freepik.com" title="Freepik">Freepik</a> from
+      <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+    </div>
+    <script src="scripts/app.js"></script>
+  </body>
 </html>
