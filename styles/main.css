@@ -1,3 +1,40 @@
+.collapsible {
+  background-color: rgb(102, 102, 102);
+  /* color: #444; */
+  color:white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+.collapsible:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  /* color: white; */
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.collapsible-content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  /* transition: max-height 0.2s ease-out; */
+  transition: display 0.2s ease-out;
+}
+
 .attributes {
   text-align: center;
   margin: auto;
