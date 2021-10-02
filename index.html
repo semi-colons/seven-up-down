@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>7 Up or 7 Down</title>
-    <link rel="shortcut icon" href="images/icons/dice-1.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="images/icons/dice-1.png"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,12 +17,15 @@
       href="https://fonts.googleapis.com/css2?family=Bangers&family=Bowlby+One+SC&family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   </head>
 
   <body>
     <div class="container">
       <main>
-        <h1 class="title"><span class="up">7 Up</span> or <span class="down">7 Down?</span></h1>
+        <h1 class="title">
+          <span class="up">7 Up</span> or <span class="down">7 Down?</span>
+        </h1>
         <section class="betBox">
           <h2 class="subtitle">Choose your bet</h2>
           <div class="buttonPanel">
@@ -53,6 +60,68 @@
           <h3 class="collapsible">History</h3>
           <div class="game-history collapsible-content">
             <ul id="history-ul"></ul>
+          </div>
+        </section>
+        <section class="stats">
+          <h3 class="collapsible">Statistics</h3>
+          <div class="game-statistics collapsible-content">
+            <!-- dice roll count, calls for up, down and seven, total dice value, average value per roll, last 10 rolls -->
+            <div class="stat-row">
+              <div class="stat">
+                <span class="stat-label">Total Dice Rolls</span>
+                <span class="stat-value" id="stat-total-roll">0</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Times Won</span>
+                <span class="stat-value win" id="stat-total-win">0</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Times Lost</span>
+                <span class="stat-value lose" id="stat-total-lose">0</span>
+              </div>
+            </div>
+            <div class="stat-row">
+              <div class="stat">
+                <span class="stat-label up">Bet Up</span>
+                <span class="stat-value up" id="stat-total-up">0</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label up">Up Won</span>
+                <span class="stat-value win" id="stat-up-win">0</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label up">Up Lost</span>
+                <span class="stat-value lose" id="stat-up-lose">0</span>
+              </div>
+            </div>
+            <div class="stat-row">
+              <div class="stat">
+                <span class="stat-label seven">Bet Seven</span>
+                <span class="stat-value seven" id="stat-total-seven">0</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label seven">Seven Won</span>
+                <span class="stat-value win" id="stat-seven-win">0</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label seven">Seven Lost</span>
+                <span class="stat-value lose" id="stat-seven-lose">0</span>
+              </div>
+            </div>
+            <div class="stat-row">
+              <div class="stat">
+                <span class="stat-label down">Bet Down</span>
+                <span class="stat-value down" id="stat-total-down">0</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label down">Down Won</span>
+                <span class="stat-value win" id="stat-down-win">0</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label down">Down Lost</span>
+                <span class="stat-value lose" id="stat-down-lose">0</span>
+              </div>
+            </div>
           </div>
         </section>
       </main>

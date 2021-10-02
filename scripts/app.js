@@ -1,4 +1,13 @@
 let currentBet = 0; //0 = equal, 1 = up, -1 = down
+let totalRolls = 0;
+let betUp = 0;
+let betSeven = 0;
+let betDown = 0;
+let timesWon = 0;
+let timesLost = 0;
+let upWin = 0;
+let upLose = 0;
+let sevenWin = sevenLose = downWin = downLose = 0;
 
 //Elements
 const upBtn = document.querySelector("#bet-up");
@@ -88,6 +97,63 @@ function addToHistory(bet, roll1, roll2, win) {
   historyUl.prepend(newRow);
 }
 
+function updateStats(bet, win) {
+    switch (bet) {
+        case 1:
+            betUp += 1;
+            break;
+        case 0:
+            betSeven += 1;
+            break;
+        case -1:
+            betDown += 1;
+            break;
+    }
+
+    if (win) {
+        timesWon += 1;
+        switch(bet) {
+            case 1:
+                upWin += 1;
+                break;
+            case 0:
+                sevenWin += 1;
+                break;
+            case -1:
+                downWin += 1;
+                break;
+        }
+    } else {
+        timesLost += 1;
+        switch(bet) {
+            case 1:
+                upLose += 1;
+                break;
+            case 0:
+                sevenLose += 1;
+                break;
+            case -1:
+                downLose += 1;
+                break;
+        }
+    }
+
+    totalRolls += 1;
+
+    document.getElementById('stat-total-roll').innerText = totalRolls;
+    document.getElementById('stat-total-win').innerText = timesWon;    
+    document.getElementById('stat-total-lose').innerText = timesLost;
+    document.getElementById('stat-total-up').innerText = betUp;
+    document.getElementById('stat-total-seven').innerText = betSeven;
+    document.getElementById('stat-total-down').innerText = betDown;
+    document.getElementById('stat-up-win').innerText = upWin;
+    document.getElementById('stat-up-lose').innerText = upLose;
+    document.getElementById('stat-seven-win').innerText = sevenWin;
+    document.getElementById('stat-seven-lose').innerText = sevenLose;
+    document.getElementById('stat-down-win').innerText = downWin;
+    document.getElementById('stat-down-lose').innerText = downLose;
+}
+
 //Event listeners and handlers
 upBtn.addEventListener("click", function () {
   changeBet(1, this);
@@ -137,6 +203,7 @@ document.addEventListener('keydown', function(e){
             rollDice();
             break;
     }
+    e.stopPropagation();
 })
 
 function changeBet(bet, button) {
@@ -177,10 +244,11 @@ function rollDice() {
   }
 
   addToHistory(currentBet, roll[0], roll[1], win);
+  updateStats(currentBet, win);
 }
 
 
-
+//Collapsibles
 let coll = document.getElementsByClassName("collapsible");
 
 for (let i = 0; i < coll.length; i++) {

@@ -1,7 +1,26 @@
+.stat-value {
+  display: block;
+  font-size: 5rem;
+  font-family: "Bowlby One SC", cursive;
+  color: #53adca
+}
+
+.stat-label {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.stat {
+  display: inline-block;
+  width: 14rem;
+  margin: 1rem;
+}
+
 .collapsible {
   background-color: rgb(102, 102, 102);
   /* color: #444; */
-  color:white;
+  color: white;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -11,12 +30,13 @@
   font-size: 15px;
 }
 
-.active, .collapsible:hover {
+.active,
+.collapsible:hover {
   background-color: #888;
 }
 
 .collapsible:after {
-  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  content: "\02795"; /* Unicode character for "plus" sign (+) */
   font-size: 13px;
   /* color: white; */
   float: right;
@@ -38,7 +58,7 @@
 .attributes {
   text-align: center;
   margin: auto;
-  font-size: 0.5rem;;
+  font-size: 0.5rem;
 }
 
 .game-history {
