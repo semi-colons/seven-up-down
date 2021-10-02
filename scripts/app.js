@@ -7,7 +7,7 @@ let timesWon = 0;
 let timesLost = 0;
 let upWin = 0;
 let upLose = 0;
-let sevenWin = sevenLose = downWin = downLose = 0;
+let sevenWin = (sevenLose = downWin = downLose = 0);
 
 //Elements
 const upBtn = document.querySelector("#bet-up");
@@ -95,63 +95,67 @@ function addToHistory(bet, roll1, roll2, win) {
   newRow.append(resultSpan);
 
   historyUl.prepend(newRow);
+
+  if (historyUl.childElementCount > 10) {
+    historyUl.removeChild(historyUl.children[historyUl.childElementCount - 1]);
+  }
 }
 
 function updateStats(bet, win) {
+  switch (bet) {
+    case 1:
+      betUp += 1;
+      break;
+    case 0:
+      betSeven += 1;
+      break;
+    case -1:
+      betDown += 1;
+      break;
+  }
+
+  if (win) {
+    timesWon += 1;
     switch (bet) {
-        case 1:
-            betUp += 1;
-            break;
-        case 0:
-            betSeven += 1;
-            break;
-        case -1:
-            betDown += 1;
-            break;
+      case 1:
+        upWin += 1;
+        break;
+      case 0:
+        sevenWin += 1;
+        break;
+      case -1:
+        downWin += 1;
+        break;
     }
-
-    if (win) {
-        timesWon += 1;
-        switch(bet) {
-            case 1:
-                upWin += 1;
-                break;
-            case 0:
-                sevenWin += 1;
-                break;
-            case -1:
-                downWin += 1;
-                break;
-        }
-    } else {
-        timesLost += 1;
-        switch(bet) {
-            case 1:
-                upLose += 1;
-                break;
-            case 0:
-                sevenLose += 1;
-                break;
-            case -1:
-                downLose += 1;
-                break;
-        }
+  } else {
+    timesLost += 1;
+    switch (bet) {
+      case 1:
+        upLose += 1;
+        break;
+      case 0:
+        sevenLose += 1;
+        break;
+      case -1:
+        downLose += 1;
+        break;
     }
+  }
 
-    totalRolls += 1;
+  totalRolls += 1;
 
-    document.getElementById('stat-total-roll').innerText = totalRolls;
-    document.getElementById('stat-total-win').innerText = timesWon;    
-    document.getElementById('stat-total-lose').innerText = timesLost;
-    document.getElementById('stat-total-up').innerText = betUp;
-    document.getElementById('stat-total-seven').innerText = betSeven;
-    document.getElementById('stat-total-down').innerText = betDown;
-    document.getElementById('stat-up-win').innerText = upWin;
-    document.getElementById('stat-up-lose').innerText = upLose;
-    document.getElementById('stat-seven-win').innerText = sevenWin;
-    document.getElementById('stat-seven-lose').innerText = sevenLose;
-    document.getElementById('stat-down-win').innerText = downWin;
-    document.getElementById('stat-down-lose').innerText = downLose;
+  document.getElementById("stat-total-roll").innerText = totalRolls;
+  document.getElementById("stat-total-win").innerText = timesWon;
+  document.getElementById("stat-total-lose").innerText = timesLost;
+  document.getElementById("stat-total-up").innerText = betUp;
+  document.getElementById("stat-total-seven").innerText = betSeven;
+  document.getElementById("stat-total-down").innerText = betDown;
+  document.getElementById("stat-up-win").innerText = upWin;
+  document.getElementById("stat-up-lose").innerText = upLose;
+  document.getElementById("stat-seven-win").innerText = sevenWin;
+  document.getElementById("stat-seven-lose").innerText = sevenLose;
+  document.getElementById("stat-down-win").innerText = downWin;
+  document.getElementById("stat-down-lose").innerText = downLose;
 }
 
 //Event listeners and handlers
@@ -160,60 +164,60 @@ upBtn.addEventListener("click", function () {
 });
 
 downBtn.addEventListener("click", function () {
-  changeBet(-1, this)
+  changeBet(-1, this);
 });
 
 sevenBtn.addEventListener("click", function () {
-  changeBet(0, this)
+  changeBet(0, this);
 });
 
 rollBtn.addEventListener("click", function () {
-    rollDice();
+  rollDice();
 });
 
-document.addEventListener('keydown', function(e){
-    switch(e.code) {
-        case 'ArrowRight':
-            switch (currentBet){
-                case 1:
-                    changeBet(0, sevenBtn);
-                    break;
-                case 0:
-                    changeBet(-1, downBtn);
-                    break;
-                case -1:
-                    changeBet(1, upBtn);
-                    break;
-            }
-            break;
-        case 'ArrowLeft':
-            switch(currentBet){
-                case -1:
-                    changeBet(0, sevenBtn);
-                    break;
-                case 0:
-                    changeBet(1, upBtn);
-                    break;
-                case 1:
-                    changeBet(-1, downBtn);
-                    break;
-            }
-            break;
-        case 'Enter':
-            rollDice();
-            break;
-    }
-    e.stopPropagation();
-})
+document.addEventListener("keydown", function (e) {
+  switch (e.code) {
+    case "ArrowRight":
+      switch (currentBet) {
+        case 1:
+          changeBet(0, sevenBtn);
+          break;
+        case 0:
+          changeBet(-1, downBtn);
+          break;
+        case -1:
+          changeBet(1, upBtn);
+          break;
+      }
+      break;
+    case "ArrowLeft":
+      switch (currentBet) {
+        case -1:
+          changeBet(0, sevenBtn);
+          break;
+        case 0:
+          changeBet(1, upBtn);
+          break;
+        case 1:
+          changeBet(-1, downBtn);
+          break;
+      }
+      break;
+    case "Enter":
+      rollDice();
+      break;
+  }
+  e.stopPropagation();
+});
 
 function changeBet(bet, button) {
-    currentBet = bet;
-    clearButtonStyles();
-    button.classList.add('betBtn-pressed');
+  currentBet = bet;
+  clearButtonStyles();
+  button.classList.add("betBtn-pressed");
 }
 
 function rollDice() {
-    let roll = getRoll();
+  let roll = getRoll();
   let sum = roll[0] + roll[1];
   console.log(`Current bet: ${currentBet}, Roll: ${roll[0]}, ${roll[1]}`);
   die1Img.setAttribute("src", `images/dice${roll[0]}.png`);
@@ -247,12 +251,11 @@ function rollDice() {
   updateStats(currentBet, win);
 }
 
-
 //Collapsibles
 let coll = document.getElementsByClassName("collapsible");
 
 for (let i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
+  coll[i].addEventListener("click", function () {
     this.classList.toggle("active");
     var content = this.nextElementSibling;
     if (content.style.display === "block") {
