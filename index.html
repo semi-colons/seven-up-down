@@ -10,6 +10,36 @@
 </head>
 
 <body>
+
+  <div class="container">
+    <main>
+      <h1 class="title">7 Up or 7 down?</h1>
+      <section class="betBox">
+        <h2>Choose your bet</h2>
+        <button class="bet-up betBtn" id="bet-up">Up</button>
+        <button class="bet-seven betBtn" id="bet-seven">Seven</button>
+        <button class="bet down betBtn" id="bet-down">Down</button>
+      </section>
+      <section class="diceBox">
+        <button class="rollBtn" id="roll-btn">Roll dice</button>
+        <div class="roll-imgs">
+          <img src="images/dice4.png" alt="die-image" id="die-1-img">
+          <img src="images/dice3.png" alt="die-image" id="die-2-img">
+        </div>
+      </section>
+      <section class="resultBox">
+        <h2 id="result-txt">Roll the dice to know if you won!</h2>
+      </section>
+      <section class="game-history">
+        <h3>History</h3>
+        <ul id="history-ul">
+          
+        </ul>
+      </section>
+    </main>
+  </div>
+  <!--TODO: Round history in UL (bet + roll + result)-->
+  <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
   <script src="scripts/app.js"></script>
 </body>
 
