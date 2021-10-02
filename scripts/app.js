@@ -90,25 +90,63 @@ function addToHistory(bet, roll1, roll2, win) {
 
 //Event listeners and handlers
 upBtn.addEventListener("click", function () {
-  currentBet = 1;
-  clearButtonStyles();
-  this.classList.add("betBtn-pressed");
+  changeBet(1, this);
 });
 
 downBtn.addEventListener("click", function () {
-  currentBet = -1;
-  clearButtonStyles();
-  this.classList.add("betBtn-pressed");
+  changeBet(-1, this)
 });
 
 sevenBtn.addEventListener("click", function () {
-  currentBet = 0;
-  clearButtonStyles();
-  this.classList.add("betBtn-pressed");
+  changeBet(0, this)
 });
 
 rollBtn.addEventListener("click", function () {
-  let roll = getRoll();
+    rollDice();
+});
+
+document.addEventListener('keydown', function(e){
+    switch(e.code) {
+        case 'ArrowRight':
+            switch (currentBet){
+                case 1:
+                    changeBet(0, sevenBtn);
+                    break;
+                case 0:
+                    changeBet(-1, downBtn);
+                    break;
+                case -1:
+                    changeBet(1, upBtn);
+                    break;
+            }
+            break;
+        case 'ArrowLeft':
+            switch(currentBet){
+                case -1:
+                    changeBet(0, sevenBtn);
+                    break;
+                case 0:
+                    changeBet(1, upBtn);
+                    break;
+                case 1:
+                    changeBet(-1, downBtn);
+                    break;
+            }
+            break;
+        case 'Enter':
+            rollDice();
+            break;
+    }
+})
+
+function changeBet(bet, button) {
+    currentBet = bet;
+    clearButtonStyles();
+    button.classList.add('betBtn-pressed');
+}
+
+function rollDice() {
+    let roll = getRoll();
   let sum = roll[0] + roll[1];
   console.log(`Current bet: ${currentBet}, Roll: ${roll[0]}, ${roll[1]}`);
   die1Img.setAttribute("src", `images/dice${roll[0]}.png`);
@@ -139,4 +177,4 @@ rollBtn.addEventListener("click", function () {
   }
 
   addToHistory(currentBet, roll[0], roll[1], win);
-});
+}
