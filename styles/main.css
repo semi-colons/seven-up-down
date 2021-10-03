@@ -2,7 +2,7 @@
   display: block;
   font-size: 5rem;
   font-family: "Bowlby One SC", cursive;
-  color: #53adca
+  color: #53adca;
 }
 
 .stat-label {
@@ -130,10 +130,20 @@
   color: white;
 }
 
+.rollBtn {
+  background-color: darkred;
+  color: white;
+}
+
+.btn:active, .btn:hover {
+  font-weight: bold;
+  transform: scale(1.1);
+}
+
 .btn {
   border-radius: 10%;
-  height: 2rem;
-  width: 6rem;
+  height: 2.5rem;
+  width: 6.5rem;
   margin: 1rem;
 }
 
